@@ -1,0 +1,52 @@
+{% extends 'scheduler/base.html' %}
+
+{% block body %}
+    <div class="container">
+        {% if user.is_authenticated %}
+            <h1>Welcome {{ user }},</h1><br/>
+            <h2>Task Schedule</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Assignee</th>
+                    <th>Assigned</th>
+                    <th>Done</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for publisher in object_list %}
+
+                    <tr>
+                        <td><a href="{% url 'sdlrs:detail' publisher.id %}">{{ publisher.task }}</a></td>
+                        <td>
+                              {% ifequal user.username publisher.t_Creator %}
+                            <form action="{% url 'sdlrs:task-delete' publisher.id %}" method="post" style="display : inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="publisher_id" value="{{ publisher.id }}"/>
+                                    <button type="submit" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </form>
+                            {% endifequal %}
+                            {{ publisher.t_Creator }}
+                        </td>
+
+                        <td>{{ publisher.t_Assigned }}</td>
+
+                        <td>
+                            {{ publisher.t_Done }}
+                        </td>
+                    </tr>
+
+                {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        {% else %}
+            <h3>Oops!!! Looks like you forgot to Log In. Please, <a href="{% url 'sdlrs:login' %}">click here</a> to log in...</h3>
+        {% endif  %}
+
+
+
+{% endblock %}

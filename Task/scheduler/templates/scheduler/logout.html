@@ -1,0 +1,12 @@
+{% extends 'scheduler/base.html' %}
+{% block title %}LogOut{% endblock %}
+
+
+{% block body %}
+
+    <div class="container-fluid">
+        <h1>You have been successfully logged out!!!</h1>
+        <h3>Please <a href="{% url 'sdlrs:login' %}">click here</a> to log in again...</h3>
+    </div>
+
+{% endblock %}
