@@ -9,3 +9,4 @@ On selecting a task, the user will be redirected to an editing page where variou
 # Deleting a task
 In order to delete a task, clicking the delete button the user can delete the task. However, only those task that are assigned to the user can be deleted.
 # Scheduler Template Image
+https://user-images.githubusercontent.com/16238734/41410459-2ea72d24-6ff7-11e8-959a-2cc80aa8316b.JPG
